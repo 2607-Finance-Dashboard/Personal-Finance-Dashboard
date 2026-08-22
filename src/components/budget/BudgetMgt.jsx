@@ -46,6 +46,19 @@ useEffect(() => {
 
     if (!isOpen) return null;
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        onSave({
+            id: initialData ?.id || Date.now().toString(),
+            category: category.trim(),
+            allocated: Number(allocated),
+            spent: Number(spent) || 0,
+            isSorted: initialData?.isSorted || false,
+            color: selectedColor,
+        });
+        onClose();
+    };
+
     
 
 };
