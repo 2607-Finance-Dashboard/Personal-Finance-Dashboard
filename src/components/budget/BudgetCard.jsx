@@ -41,8 +41,8 @@ export function BudgetCard ({Budget, onEdit, OnDelete, onToggleSorted}) {
     const status = getStatusBadge();
     
     return(
-        <div className={`p-5 rounded-xl border-t-4 transition-all shadow-sm hover:shadow-md relative bg-white ${
-                isSorted ? 'opacity-90 border-t-emerald-500 bg-emerald-50/10' : 'border-gray-100'
+        <div className={`p-5 rounded-xl border-t-4 transition-all shadow-sm hover:shadow-md relative bg-white 
+            ${ isSorted ? 'opacity-90 border-t-emerald-500 bg-emerald-50/10' : 'border-gray-100'
       }`}
        // Custom card color on top border
        style={{ borderTopColor: color || '#3B82F6' }}>
@@ -71,7 +71,52 @@ export function BudgetCard ({Budget, onEdit, OnDelete, onToggleSorted}) {
         </div>
 
         {/* progress bar */}
-        </div> 
-    )
 
-}
+         <div className="space-y-2 my-4">
+        <div className="flex justify-between text-sm font-medium">
+          <span className="text-gray-600">${spent.toLocaleString()} spent</span>
+          <span className="text-gray-400">Limit: ${allocated.toLocaleString()}</span>
+        </div>  
+
+        {/* outer bar track  */}
+
+        <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+
+          {/* Inner Custom Colored Progress Bar */}
+          <div 
+            className="h-2 rounded-full transition-all duration-500"
+            style={{  width: `${Math.min(percentUsed, 100)}%`,
+              backgroundColor: isOverBudget ? '#EF4444' : color || '#3B82F6'}}/>            
+          
+        </div>
+      </div>
+{/* footer card  */}
+            <div className="pt-3 border-t border-gray-100 flex justify-between items-center">
+        <span className={`text-xs font-semibold ${isOverBudget ? 'text-red-600' : 'text-gray-500'}`}>
+          {isOverBudget 
+            ? `$${Math.abs(remaining).toLocaleString()} over limit` 
+            : `$${remaining.toLocaleString()} left`}
+        </span>
+ {/* mark paid bills button */}
+           <button
+          onClick={() => onToggleSorted(id)}
+          className={`flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border transition 
+            ${isSorted ? 'bg-emerald-600 text-white border-emerald-600 hover:bg-emerald-700'
+             : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'}`}> 
+        
+          {isSorted ? (
+            <>
+              <CheckCircle2 className="w-3 h-3" /> Sorted
+            </>
+          ) : (
+            <>
+              <Circle className="w-3 h-3 text-gray-400" /> Mark as Sorted
+            </>
+          )}
+        </button>
+      </div> 
+
+        </div> 
+
+    );
+};
