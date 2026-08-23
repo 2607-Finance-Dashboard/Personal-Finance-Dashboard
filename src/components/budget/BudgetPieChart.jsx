@@ -1,6 +1,6 @@
 import React from "react";
 
-export function BudgetPieCht({ budgets = [] }) {
+export function BudgetPieChart({ budgets = [] }) {
   // for total allocated
   const totalAllocated = budgets.reduce(
     (acc, curr) => acc + (Number(curr.allocated) || 0),

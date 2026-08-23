@@ -16,7 +16,7 @@ const COLOR_PALETTE = [
   { name: "sky", hex: "#0284c7" },
 ];
 
-export function BudgetMgt({
+export function BudgetModal({
   isOpen,
   onClose,
   onSave,
