@@ -1,11 +1,12 @@
 import './App.css'
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
+import Dashboard from './pages/Dashboard';
 
 function App() {
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-slate-50">
     <Navbar/>
 
     <div className="flex">
@@ -13,7 +14,7 @@ function App() {
 
       <main className='flex-1 p-6'>
         <h1 className='text-2xl font-bold text-gray-900'>
-          Dashboard
+          <Dashboard/>
         </h1>
       </main>
     </div> 
