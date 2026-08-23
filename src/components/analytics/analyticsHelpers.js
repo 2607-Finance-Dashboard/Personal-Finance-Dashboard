@@ -27,3 +27,19 @@ export function getMonthlyTotals(transactions) {
 
   return Object.values(totals).sort((a, b) => a.month.localeCompare(b.month));
 }
+
+export function getSpendingByCategory(transactions) {
+  const totals = {};
+
+  transactions
+    .filter((tx) => tx.type === 'expense')
+    .forEach((tx) => {
+      const category = tx.category || 'Other';
+      totals[category] = (totals[category] || 0) + Number(tx.amount);
+    });
+
+  return Object.keys(totals).map((category) => ({
+    category,
+    total: totals[category],
+  }));
+}
