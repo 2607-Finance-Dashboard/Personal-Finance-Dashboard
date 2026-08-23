@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import { Check, X, check } from "lucide-react";
-import { initial } from "node_modules/@base-ui/react/internals/reason-parts.mjs";
+import { Check, X } from "lucide-react";
+
 
 // color palettes to choose for cards
 
@@ -50,7 +50,7 @@ export function BudgetModal({
       );
       setSelectedColor(firstAvailable ? firstAvailable.hex : "#262626");
     }
-  }, [initial, isOpen]);
+  }, [initialData, isOpen]);
 
   if (!isOpen) return null;
 
@@ -105,7 +105,7 @@ export function BudgetModal({
             </label>
             <input
               type="number"
-              required = ""
+              required 
               min="1"
               value={allocated}
               onChange={(e) => setAllocated(e.target.value)}
