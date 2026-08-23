@@ -117,4 +117,4 @@ export function BudgetPieCht({ budgets = [] }) {
       </div>
     </div>
   );
-}
+};
