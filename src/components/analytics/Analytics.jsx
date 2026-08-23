@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { collection, onSnapshot } from 'firebase/firestore';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { db } from '../../lib/firebase';
-import { getTotalIncome, getTotalExpenses } from './analyticsHelpers';
+import { getTotalIncome, getTotalExpenses, getMonthlyTotals } from './analyticsHelpers';
 
 export default function Analytics() {
   const [transactions, setTransactions] = useState([]);
@@ -17,6 +18,7 @@ export default function Analytics() {
   const totalIncome = getTotalIncome(transactions);
   const totalExpenses = getTotalExpenses(transactions);
   const balance = totalIncome - totalExpenses;
+  const monthlyData = getMonthlyTotals(transactions);
 
   return (
     <div className="p-6 max-w-6xl mx-auto">
@@ -35,6 +37,21 @@ export default function Analytics() {
           <p className="text-sm text-gray-500">Balance</p>
           <p className="text-xl font-bold">${balance.toFixed(2)}</p>
         </div>
+      </div>
+
+      <div className="bg-white p-4 rounded-lg border mt-6">
+        <h2 className="text-lg font-semibold mb-4">Income vs Expenses</h2>
+        <ResponsiveContainer width="100%" height={300}>
+          <BarChart data={monthlyData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="month" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="income" fill="#22c55e" name="Income" />
+            <Bar dataKey="expense" fill="#ef4444" name="Expenses" />
+          </BarChart>
+        </ResponsiveContainer>
       </div>
     </div>
   );
