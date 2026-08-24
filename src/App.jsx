@@ -4,6 +4,7 @@ import {Routes, Route} from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
 import Dashboard from './pages/Dashboard'
+import Transactions from './pages/transactions'
 
 function App() {
   return (
