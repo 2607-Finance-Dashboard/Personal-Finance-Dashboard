@@ -2,7 +2,6 @@ import {Bell, User} from "lucide-react";
 
 
 
-
 export default function Navbar() {
     return(
         <nav className="flex items-center justify-between boarder-b bg-white px-6 py-4">
@@ -32,6 +31,7 @@ export default function Navbar() {
                             Personal Account
                         </p>
                     </div>
+                    <a href to="/settings">Settings</a>
                 </div>
             </div>
         </nav>
