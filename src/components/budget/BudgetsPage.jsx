@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Plus, Wallet, Wallet2 } from 'lucide-react';
-import { BudgetCard } from '../components/budgets/BudgetCard';
-import { BudgetPieChart } from '../components/budgets/BudgetPieChart';
-import { BudgetModal } from '../components/budgets/BudgetModal';
+import { Plus, Wallet2 } from 'lucide-react';
+import { BudgetCard } from './BudgetCard';
+import { BudgetPieChart } from './BudgetPieChart';
+import { BudgetModal } from './BudgetModal';
 
 const initialBudgets = [
   { id: '1', category: 'Groceries & Household', allocated: 600, spent: 420, isSorted: false, color: '#059669' },
@@ -14,18 +14,18 @@ const initialBudgets = [
 export default function BudgetsPage() {
     const [budgets, setBudgets] = useState(initialBudgets);    
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [editingBudget, setEditingBudgets] = useState(null);
+    const [editingBudget, setEditingBudget] = useState(null);
 
     const handleOpenCreateModal =() => {
-        setEditingBudgets(null);
+        setEditingBudget(null);
         setIsModalOpen(true);
     };
-    const handleOpenEditingModal = () => {
-        setEditingBudgets(budget);
+    const handleOpenEditModal = (budget) => {
+        setEditingBudget(budget);
         setIsModalOpen(true);
 
     };
-    const handleSaveBudet = (savedBudget) => {
+    const handleSaveBudget = (savedBudget) => {
         setBudgets((prevBudgets) => {
             const exists = prevBudgets.some((b) => b.id === savedBudget.id);
             if(exists){
@@ -110,7 +110,7 @@ export default function BudgetsPage() {
       </section>
 
       {/* Create / Edit budget*/}
-      <BudgetMgt
+      <BudgetModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onSave={handleSaveBudget}

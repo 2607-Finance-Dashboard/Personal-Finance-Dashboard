@@ -1,8 +1,8 @@
 import React from "react";
-import { AlertTriangle, CheckCircle, CheckCircle2, Pencil, Trash2 } from "lucide-react";
+import { AlertTriangle, CheckCircle2, Circle, PencilIcon, Trash2 } from "lucide-react";
 
-export function BudgetCard ({Budget, onEdit, OnDelete, onToggleSorted}) {
-    const {id, category, allocated, spent, isSorted, color} = Budget;
+export function BudgetCard ({budget, onEdit, onDelete, onToggleSorted}) {
+    const {id, category, allocated, spent, isSorted, color} = budget;
 // to calculate 
     const percentUsed = Math.round((spent / allocated) * 100);
     const remaining = allocated - spent;
@@ -60,7 +60,7 @@ export function BudgetCard ({Budget, onEdit, OnDelete, onToggleSorted}) {
             <button onClick={() => onEdit(budget)}
             className="p-1 hover:text-blue-200 hover:bg-gray-100 rounded-lg transition"
             title="Edit Budget">
-                <pencil className="w-4 h-4"/>
+                <PencilIcon className="w-4 h-4"/>
             </button>
             <button onClick={() => onDelete(id)}
             className="p-1 hover:text-blue-200 hover:bg-gray-100 rounded-lg transition"
