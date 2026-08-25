@@ -1,57 +1,176 @@
-import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import "./App.css";
+import { Routes, Route, useNavigate, Navigate} from "react-router-dom";
 
-import Navbar from './components/Navbar'
-import Sidebar from './components/Sidebar'
-import Dashboard from './pages/Dashboard'
-import Transactions from './pages/Transactions'
-import BudgetsPage from './Components/budget/BudgetsPage'
-import Goals from './Pages/Goals'
-import Report from './Pages/Report'
-import ProfileSettings from './Pages/ProfileSettings'
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
+
+import LandingPage from "./Pages/LandingPage";
+import Login from "./Pages/Login";
+import SignUp from "./Pages/SignUp";
+
+import Dashboard from "./Pages/Dashboard";
+import Transactions from "./Pages/Transactions";
+import BudgetsPage from "./Components/budget/BudgetsPage";
+import Goals from "./Pages/Goals";
+import Report from "./Pages/Report";
+import ProfileSettings from "./Pages/ProfileSettings";
+import LogOut from "./Pages/LogOut";
 
 function App() {
+  const navigate = useNavigate();
+
   return (
-  <div className="min-h-screen bg-slate-50">
-    <Navbar />
-    <div className="flex">
-          <Sidebar />
+    <Routes>
+      
+      <Route
+        path="/"
+        element={
+          <LandingPage
+            onGetStarted={() => navigate("/login")}
+          />
+        }
+      />
 
-          <main className="flex-1 p-6">
-            <Routes>
+      
+      <Route
+        path="/login"
+        element={<Login />}
+      />
 
-              <Route path="/" element={<Dashboard />} />
+      <Route
+        path="/signup"
+        element={<SignUp />}
+      />
 
-              <Route
-                path="/transactions"
-                element={<Transactions/>}
-              />
+      
+      <Route
+        path="/dashboard"
+        element={
+          <div className="min-h-screen bg-slate-50">
+            <Navbar />
 
-              <Route
-                path="/budgets"
-                element={<BudgetsPage/>}
-              />
+            <div className="flex">
+              <Sidebar />
 
-              <Route
-                path="/goals"
-                element={<Goals/>}
-              />
+              <main className="flex-1 p-6">
+                <Dashboard />
+              </main>
+            </div>
+          </div>
+        }
+      />
 
-              <Route
-                path="/reports"
-                element={<Report/>}
-              />
+      <Route
+        path="/transactions"
+        element={
+          <div className="min-h-screen bg-slate-50">
+            <Navbar />
 
-              <Route
-                path="/settings"
-                element={<ProfileSettings/>}
-              />
+            <div className="flex">
+              <Sidebar />
 
-            </Routes>
-          </main>
-    </div>
-  </div>
-  )
+              <main className="flex-1 p-6">
+                <Transactions />
+              </main>
+            </div>
+          </div>
+        }
+      />
+
+      <Route
+        path="/budgets"
+        element={
+          <div className="min-h-screen bg-slate-50">
+            <Navbar />
+
+            <div className="flex">
+              <Sidebar />
+
+              <main className="flex-1 p-6">
+                <BudgetsPage />
+              </main>
+            </div>
+          </div>
+        }
+      />
+
+      <Route
+        path="/goals"
+        element={
+          <div className="min-h-screen bg-slate-50">
+            <Navbar />
+
+            <div className="flex">
+              <Sidebar />
+
+              <main className="flex-1 p-6">
+                <Goals />
+              </main>
+            </div>
+          </div>
+        }
+      />
+
+      <Route
+        path="/reports"
+        element={
+          <div className="min-h-screen bg-slate-50">
+            <Navbar />
+
+            <div className="flex">
+              <Sidebar />
+
+              <main className="flex-1 p-6">
+                <Report />
+              </main>
+            </div>
+          </div>
+        }
+      />
+
+     
+      <Route
+        path="/profile"
+        element={
+          <div className="min-h-screen bg-slate-50">
+            <Navbar />
+
+            <div className="flex">
+              <Sidebar />
+
+              <main className="flex-1 p-6">
+                <ProfileSettings />
+              </main>
+            </div>
+          </div>
+        }
+      />
+
+    
+      <Route
+        path="/profile-settings"
+        element={
+          <div className="min-h-screen bg-slate-50">
+            <Navbar />
+
+            <div className="flex">
+              <Sidebar />
+
+              <main className="flex-1 p-6">
+                <ProfileSettings />
+              </main>
+            </div>
+          </div>
+        }
+      />
+   
+
+      <Route
+        path="/logout"
+        element={<LogOut />}
+      />
+    </Routes>
+  );
 }
 
 export default App;
