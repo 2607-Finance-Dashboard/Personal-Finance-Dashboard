@@ -4,7 +4,11 @@ import {Routes, Route} from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
 import Dashboard from './pages/Dashboard'
-import Transactions from './pages/transactions'
+import Transactions from './pages/Transactions'
+import BudgetsPage from './Components/budget/BudgetsPage'
+import Goals from './Pages/Goals'
+import Report from './Pages/Report'
+import Settings from './Pages/Settings'
 
 function App() {
   return (
@@ -23,27 +27,27 @@ function App() {
 
               <Route
                 path="/transactions"
-                element={<h1 className="text-2xl font-bold">Transactions</h1>}
+                element={<Transactions/>}
               />
 
               <Route
                 path="/budgets"
-                element={<h1 className="text-2xl font-bold">Budgets</h1>}
+                element={<BudgetsPage/>}
               />
 
               <Route
                 path="/goals"
-                element={<h1 className="text-2xl font-bold">Goals</h1>}
+                element={<Goals/>}
               />
 
               <Route
                 path="/reports"
-                element={<h1 className="text-2xl font-bold">Reports</h1>}
+                element={<Report/>}
               />
 
               <Route
                 path="/settings"
-                element={<h1 className="text-2xl font-bold">Settings</h1>}
+                element={<Settings/>}
               />
 
             </Routes>

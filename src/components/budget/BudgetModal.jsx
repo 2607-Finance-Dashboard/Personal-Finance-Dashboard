@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import { Check, X, check } from "lucide-react";
-import { initial } from "node_modules/@base-ui/react/internals/reason-parts.mjs";
+import { Check, X,} from "lucide-react";
+
 
 // color palettes to choose for cards
 

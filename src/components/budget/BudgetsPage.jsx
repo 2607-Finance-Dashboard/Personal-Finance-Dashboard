@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Plus, Wallet, Wallet2 } from 'lucide-react';
-import { BudgetCard } from '../components/budgets/BudgetCard';
-import { BudgetPieChart } from '../components/budgets/BudgetPieChart';
-import { BudgetModal } from '../components/budgets/BudgetModal';
+import { BudgetCard } from './BudgetCard';
+import { BudgetPieChart } from './BudgetPieChart';
+import { BudgetModal } from './BudgetModal';
 
 const initialBudgets = [
   { id: '1', category: 'Groceries & Household', allocated: 600, spent: 420, isSorted: false, color: '#059669' },
