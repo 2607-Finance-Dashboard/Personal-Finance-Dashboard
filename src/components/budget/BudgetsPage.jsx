@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Wallet2 } from 'lucide-react';
+import { Plus, Wallet, Wallet2 } from 'lucide-react';
 import { BudgetCard } from './BudgetCard';
 import { BudgetPieChart } from './BudgetPieChart';
 import { BudgetModal } from './BudgetModal';

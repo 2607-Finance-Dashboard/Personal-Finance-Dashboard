@@ -31,7 +31,7 @@ export default function Navbar() {
                             Personal Account
                         </p>
                     </div>
-                    <a href to="/settings">Settings</a>
+                    
                 </div>
             </div>
         </nav>

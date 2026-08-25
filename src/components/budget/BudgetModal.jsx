@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import { Check, X } from "lucide-react";
+import { Check, X,} from "lucide-react";
 
 
 // color palettes to choose for cards
