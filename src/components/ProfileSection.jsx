@@ -31,44 +31,43 @@ function ProfileSection() {
     };
 
     return (
-        <Card className="border-gray-200 bg-white shadow-sm">
-            {/* Header */}
+        <Card className="border-gray-200 bg-white text-gray-900 shadow-sm transition-colors dark:border-gray-700 dark:bg-gray-900 dark:text-white">
+          
             <CardHeader>
-                <CardTitle className="text-xl font-bold  ml-30  text-stone-900">
+                <CardTitle className="text-xl font-semibold text-gray-900 ml-20 dark:text-white">
                     Profile Overview
                 </CardTitle>
 
-                <CardDescription className="text-gray-500  ml-30 mb-8">
+                <CardDescription className="text-gray-500 dark:text-gray-400 ml-20">
                     Manage your personal information and account details.
                 </CardDescription>
             </CardHeader>
 
-            {/* Content */}
+     
             <CardContent>
                 <div className="flex flex-col gap-8 md:flex-row">
 
-                    {/* Profile Avatar */}
+                  
                     <div className="flex flex-col items-center md:w-1/4">
                         <Avatar className="size-35 overflow-hidden rounded-full">
-                           <img src="src/assets/Avator.png" alt=""  className="h-full w-full object-cover object-top"/>
+                            <img src="src/assets/Avator.png" alt="" className="h-full w-full object-cover object-top" />
                             <AvatarFallback>NA</AvatarFallback>
                         </Avatar>
 
-                        <h3 className="mt-4 text-lg font-semibold text-gray-900">
+                        <h3 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">
                             {profile.name}
                         </h3>
-
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
                             {profile.email}
                         </p>
                     </div>
 
-                    {/* Profile Information */}
+                    
                     <div className="flex-1">
 
                         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
 
-                            {/* Full Name */}
+                         
                             <div className="space-y-2">
                                 <Label htmlFor="name">
                                     Full Name
@@ -81,10 +80,11 @@ function ProfileSection() {
                                     onChange={handleChange}
                                     disabled={!isEditing}
                                     placeholder="Enter your full name"
+                                    className="bg-gray-50 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder:text-gray-400"
                                 />
                             </div>
 
-                            {/* Email */}
+                          
                             <div className="space-y-2">
                                 <Label htmlFor="email">
                                     Email Address
@@ -98,10 +98,12 @@ function ProfileSection() {
                                     onChange={handleChange}
                                     disabled={!isEditing}
                                     placeholder="Enter your email"
+                                    className="bg-gray-50 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder:text-gray-400"
                                 />
+
                             </div>
 
-                            {/* Phone */}
+                      
                             <div className="space-y-2">
                                 <Label htmlFor="phone">
                                     Phone Number
@@ -114,10 +116,11 @@ function ProfileSection() {
                                     onChange={handleChange}
                                     disabled={!isEditing}
                                     placeholder="Enter your phone number"
+                                    className="bg-gray-50 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder:text-gray-400"
                                 />
                             </div>
 
-                            {/* Location */}
+                        
                             <div className="space-y-2">
                                 <Label htmlFor="location">
                                     Location
@@ -130,12 +133,13 @@ function ProfileSection() {
                                     onChange={handleChange}
                                     disabled={!isEditing}
                                     placeholder="Enter your location"
+                                    className="bg-gray-50 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder:text-gray-400"
                                 />
                             </div>
 
                         </div>
 
-                        {/* Buttons */}
+                 
                         <div className="mt-6 flex justify-end gap-3">
 
                             {isEditing && (
@@ -150,8 +154,8 @@ function ProfileSection() {
                             {!isEditing ? (
                                 <Button
                                     onClick={() => setIsEditing(true)}
-                                    className="bg-gray-900 text-white hover:bg-gray-800"
-                                >
+                                    className="bg-gray-900 text-white hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200">
+
                                     Edit Profile
                                 </Button>
                             ) : (

@@ -50,7 +50,7 @@ export function BudgetModal({
       );
       setSelectedColor(firstAvailable ? firstAvailable.hex : "#262626");
     }
-  }, [initial, isOpen]);
+  }, [initialData, isOpen]);
 
   if (!isOpen) return null;
 
@@ -105,7 +105,7 @@ export function BudgetModal({
             </label>
             <input
               type="number"
-              required = ""
+              required 
               min="1"
               value={allocated}
               onChange={(e) => setAllocated(e.target.value)}
@@ -117,7 +117,7 @@ export function BudgetModal({
 
           <div>
             <label className="block text-xs font-semibold uppercase text-stone-600 mb-1">
-              Already Spent ($){" "}
+              Already Spent (Ksh){" "}
               <span className="text-stone-400 font-normal lowercase">(optional)</span>              
             </label>
             <input
@@ -133,7 +133,7 @@ export function BudgetModal({
 
           <div>
             <label className="block text-xs font-semibold uppercase text-stone-600 mb-2">
-              Category Accent Color
+              Category Color
             </label>
             <div className="flex flex-wrap gap-2.5">
               {COLOR_PALETTE.map((colorObj) => {
@@ -167,7 +167,7 @@ export function BudgetModal({
               })}
             </div>
             <p className="text-xs text-stone-400 mt-1.5">
-              Faded colors are already assigned to another budget category.
+              Color already assigned.
             </p>
           </div>
 

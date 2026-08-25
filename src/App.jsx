@@ -1,5 +1,5 @@
-import './App.css'
-import {Routes, Route} from 'react-router-dom'
+import './App.css';
+import { Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
@@ -55,8 +55,8 @@ function App() {
         </div>
 
       </div>
-    
+    </div>
   )
 }
 
-export default App
+export default App;
