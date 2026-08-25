@@ -12,12 +12,9 @@ import ProfileSettings from './Pages/ProfileSettings'
 
 function App() {
   return (
-  
-      <div className="min-h-screen bg-slate-50">
-
-        <Navbar />
-
-        <div className="flex">
+  <div className="min-h-screen bg-slate-50">
+    <Navbar />
+    <div className="flex">
           <Sidebar />
 
           <main className="flex-1 p-6">
@@ -52,10 +49,8 @@ function App() {
 
             </Routes>
           </main>
-        </div>
-
-      </div>
     </div>
+  </div>
   )
 }
 
