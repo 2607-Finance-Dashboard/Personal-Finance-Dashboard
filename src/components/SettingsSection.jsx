@@ -15,13 +15,7 @@ import { updatePassword } from "firebase/auth";
 import { auth } from "../lib/firebase";
 
 function SettingsSection({ darkMode, setDarkMode }) {
-  const [notifications, setNotifications] = useState(() => {
-    return JSON.parse(
-      localStorage.getItem("notifications") ?? "true"
-    );
-  });
-
-  const [profileVisibility, setProfileVisibility] = useState(() => {
+ const [profileVisibility, setProfileVisibility] = useState(() => {
     return JSON.parse(
       localStorage.getItem("profileVisibility") ?? "true"
     );
@@ -35,34 +29,28 @@ function SettingsSection({ darkMode, setDarkMode }) {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [darkMode]);
+ useEffect(() => {
+  if (darkMode) {
+    document.documentElement.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+    localStorage.setItem("theme", "light");
+  }
+}, [darkMode]);
 
-  const handleSave = () => {
-    localStorage.setItem(
-      "notifications",
-      JSON.stringify(notifications)
-    );
+const handleSave = () => {
+  localStorage.setItem(
+    "profileVisibility",
+    JSON.stringify(profileVisibility)
+  );
 
-    localStorage.setItem(
-      "profileVisibility",
-      JSON.stringify(profileVisibility)
-    );
+  setSaved(true);
 
-    setSaved(true);
-
-    setTimeout(() => {
-      setSaved(false);
-    }, 1000);
-  };
-
+  setTimeout(() => {
+    setSaved(false);
+  }, 1000);
+};
   const handlePasswordChange = async () => {
     if (!currentPassword || !newPassword || !confirmPassword) {
       alert("Please fill in all password fields.");
@@ -120,22 +108,7 @@ function SettingsSection({ darkMode, setDarkMode }) {
         </CardHeader>
 
         <CardContent className="space-y-6">
-          <div className="flex items-center justify-between border-b border-gray-100 pb-5 dark:border-gray-700">
-            <div className="space-y-1">
-              <Label className="ml-10 text-base text-gray-900 dark:text-white">
-                Notifications
-              </Label>
-
-              <p className="ml-10 text-sm text-gray-500 dark:text-gray-400">
-                Get updates about your account.
-              </p>
-            </div>
-
-            <Switch
-              checked={notifications}
-              onCheckedChange={setNotifications}
-            />
-          </div>
+        
 
           <div className="flex items-center justify-between border-b border-gray-100 pb-5 dark:border-gray-700">
             <div className="space-y-1">
