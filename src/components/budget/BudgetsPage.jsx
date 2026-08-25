@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Plus, Wallet, Wallet2 } from 'lucide-react';
 import { BudgetCard } from './BudgetCard';
 import { BudgetPieChart } from './BudgetPieChart';
 import { BudgetModal } from './BudgetModal';
+import { db } from '../../lib/firebase';
+import { 
+  collection, 
+  query, 
+  onSnapshot, 
+  doc, 
+  updateDoc, 
+  addDoc, 
+  deleteDoc 
+} from 'firebase/firestore';
 
 const initialBudgets = [
   { id: '1', category: 'Groceries & Household', allocated: 600, spent: 420, isSorted: false, color: '#059669' },
