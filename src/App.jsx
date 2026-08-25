@@ -8,7 +8,7 @@ import Transactions from './pages/Transactions'
 import BudgetsPage from './Components/budget/BudgetsPage'
 import Goals from './Pages/Goals'
 import Report from './Pages/Report'
-import Settings from './Pages/Settings'
+import ProfileSettings from './Pages/ProfileSettings'
 
 function App() {
   return (
@@ -47,7 +47,7 @@ function App() {
 
               <Route
                 path="/settings"
-                element={<Settings/>}
+                element={<ProfileSettings/>}
               />
 
             </Routes>
