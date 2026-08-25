@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase/Config";
+import { auth } from "../lib/firebase";
 import { useNavigate } from "react-router-dom";
 
 function SignUp() {
