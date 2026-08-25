@@ -37,6 +37,11 @@ function App() {
             />
 
             <Route
+              path="/analytics"
+              element={<Analytics />}
+            />
+
+            <Route
               path="/reports"
               element={<Analytics />}
             />
