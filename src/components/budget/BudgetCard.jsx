@@ -74,8 +74,8 @@ export function BudgetCard ({budget, onEdit, onDelete, onToggleSorted}) {
 
          <div className="space-y-2 my-4">
         <div className="flex justify-between text-sm font-medium">
-          <span className="text-gray-600">${spent.toLocaleString()} spent</span>
-          <span className="text-gray-400">Limit: ${allocated.toLocaleString()}</span>
+          <span className="text-gray-600">Ksh{spent.toLocaleString()} spent</span>
+          <span className="text-gray-400">Limit: Ksh{allocated.toLocaleString()}</span>
         </div>  
 
         {/* outer bar track  */}
@@ -94,8 +94,8 @@ export function BudgetCard ({budget, onEdit, onDelete, onToggleSorted}) {
             <div className="pt-3 border-t border-gray-100 flex justify-between items-center">
         <span className={`text-xs font-semibold ${isOverBudget ? 'text-red-600' : 'text-gray-500'}`}>
           {isOverBudget 
-            ? `$${Math.abs(remaining).toLocaleString()} over limit` 
-            : `$${remaining.toLocaleString()} left`}
+            ? `Ksh${Math.abs(remaining).toLocaleString()} over limit` 
+            : `Ksh${remaining.toLocaleString()} left`}
         </span>
  {/* mark paid bills button */}
            <button
