@@ -101,7 +101,7 @@ export function BudgetModal({
           {/* limit  */}
           <div>
             <label className="block text-xs font-semibold uppercase text-stone-600 mb-1">
-              Monthly Spending Limit ($)
+              Monthly Spending Limit (Ksh)
             </label>
             <input
               type="number"
