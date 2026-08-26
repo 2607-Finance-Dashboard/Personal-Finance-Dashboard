@@ -21,7 +21,7 @@ function SignUp() {
       await createUserWithEmailAndPassword(auth, email, password);
 
       alert("Account created successfully!");
-      navigate("/test-login");
+      navigate("/login");
     } catch (error) {
       console.log(error);
       setError(error.message);
@@ -100,3 +100,7 @@ function SignUp() {
 }
 
 export default SignUp;
+
+
+
+

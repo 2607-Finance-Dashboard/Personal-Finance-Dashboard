@@ -194,4 +194,16 @@ function App() {
   );
 }
 
+      <Route
+        path="/ProfileSettings"
+        element={
+          <ProfileSettings
+            darkMode={darkMode}
+            setDarkMode={setDarkMode}
+          />
+        }
+      />
+    </Routes>
+  );
+}
 export default App;
