@@ -4,6 +4,7 @@ import {
   Wallet,
   Target,
   BarChart3,
+  PieChart,
   Settings,
 } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -31,8 +32,13 @@ export default function Sidebar() {
       path: "/goals",
     },
     {
-      name: "Reports",
+      name: "Analytics",
       icon: BarChart3,
+      path: "/analytics",
+    },
+    {
+      name: "Reports",
+      icon: PieChart,
       path: "/reports",
     },
   ];

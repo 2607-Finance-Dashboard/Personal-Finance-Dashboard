@@ -15,11 +15,14 @@ import Goals from "./Pages/Goals";
 import Report from "./Pages/Report";
 import ProfileSettings from "./Pages/ProfileSettings";
 import LogOut from "./Pages/LogOut";
+import Analytics from './components/analytics/Analytics'; 
+
 
 function App() {
   const navigate = useNavigate();
 
   return (
+
     <Routes>
       
       <Route
@@ -145,6 +148,23 @@ function App() {
           </div>
         }
       />
+          
+       <Route
+              path="/analytics"
+              element={
+                <div className="min-h-screen bg-slate-50">
+            <Navbar />
+
+            <div className="flex">
+              <Sidebar />
+
+              <main className="flex-1 p-6">
+                <Analytics />
+              </main>
+            </div>
+          </div>
+              }
+         />
 
     
       <Route
@@ -170,6 +190,7 @@ function App() {
         element={<LogOut />}
       />
     </Routes>
+
   );
 }
 
