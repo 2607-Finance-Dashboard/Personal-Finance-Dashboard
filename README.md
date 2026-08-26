@@ -1,17 +1,89 @@
-# React + Vite
+# Personal Finance Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Track your income, expenses, budgets, and goals in one place. Built with React, Vite, Tailwind CSS, and Firebase.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- *Dashboard* — summary of your balance, income, and spending
+- *Transactions* — add, edit, filter, and delete transactions
+- *Budgets* — set category budgets and track progress
+- *Goals* — save toward targets
+- *Analytics* — charts for income vs. expenses and spending by category
+- *Auth* — sign up, log in, and manage your profile
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 1. Install
 
-## Expanding the ESLint configuration
+bash
+npm install
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# Personal-Finance-Dashboard
+
+### 2. Add your Firebase keys
+
+Create a .env file in the project root:
+
+env
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+
+
+Find these in your Firebase Console under *Project settings → Your apps*. Make sure Firestore and Authentication are enabled.
+
+> .env should stay out of git — never commit your keys.
+
+### 3. Run 
+The deployed link : https://personal-finance-dashboard-jet-seven.vercel.app/
+
+bash
+npm run dev
+
+
+Then open the URL Vite prints (usually http://localhost:5173).
+
+## Scripts
+
+| Command | What it does |
+| --- | --- |
+| npm run dev | Start the dev server |
+| npm run build | Build for production |
+| npm run preview | Preview the production build |
+| npm run lint | Run ESLint |
+
+## Project Structure
+
+
+src/
+  Pages/           Route pages (Dashboard, Transactions, Goals, Login, ...)
+  components/      Shared UI and feature components
+    analytics/     Charts and analytics helpers
+    budget/        Budget cards, modal, and pie chart
+    ui/            Base UI primitives (button, card, dialog, ...)
+  lib/
+    firebase.js    Firebase setup (Firestore + Auth)
+    utils.js       Helpers
+  App.jsx          Routes and page layout
+  main.jsx         App entry point
+
+
+## Routes
+
+| Path | Page |
+| --- | --- |
+| / | Landing |
+| /login, /signup | Auth |
+| /dashboard | Dashboard |
+| /transactions | Transactions |
+| /budgets | Budgets |
+| /goals | Goals |
+| /analytics | Analytics |
+| /reports | Reports |
+| /profile-settings | Profile settings |
+
+## Tech Stack
+
+React 19 · Vite · React Router · Tailwind CSS · Recharts · Firebase · Lucide Icons

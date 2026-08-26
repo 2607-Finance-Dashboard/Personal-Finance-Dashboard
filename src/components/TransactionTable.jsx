@@ -17,8 +17,8 @@ export default function TransactionTable({ transactions, handleOpenModal, handle
           </TableRow>
         </TableHeader>
         <TableBody>
-          {transactions.length > 0 ? transactions.map(transaction => (
-            <TableRow key={transaction.id} className="hover:bg-gray-50">
+          {transactions.length > 0 ? transactions.map(transaction => ( //here it uses the ternary operator to check if there are any transactions,if yes it is added to the tr,if No it jumps to the bottom where it displays the no transactions
+            <TableRow key={transaction.id} className="hover:bg-gray-50"> 
               <TableCell className="font-medium text-gray-800">{transaction.description}</TableCell>
               <TableCell className="text-gray-500">{transaction.category}</TableCell>
               <TableCell className="text-gray-500">{transaction.date}</TableCell>
