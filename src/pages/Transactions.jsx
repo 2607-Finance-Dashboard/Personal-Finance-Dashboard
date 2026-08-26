@@ -20,13 +20,13 @@ export default function Transactions() {
 
   useEffect(() => {
     const q = query(collection(db, 'transactions'), orderBy('date', 'desc'));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
+    const unsubscribe = onSnapshot(q, (snapshot) => {  //in the case of snapshot,its a real time listener such that if it a transaction is added,you wont need to refresh the page
       const txData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setTransactions(txData);
     });
-    return () => unsubscribe();
+    return () => unsubscribe();// cleanup so that if you navigate to another page,listener turns off to save computer memory
   }, []);
-
+  //this function is triggered when you edit or add a transaction
   const handleOpenModal = (transaction = null) => {
     if (transaction) {
       setEditingId(transaction.id);
@@ -35,7 +35,7 @@ export default function Transactions() {
       setEditingId(null);
       setFormData({ description: '', amount: '', type: 'expense', category: '', date: '' });
     }
-    setIsModalOpen(true);
+    setIsModalOpen(true);//makes the transaction popup screen appear when you want to add a transaction
   };
 
   const handleSubmit = async (e) => {
