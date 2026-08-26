@@ -22,9 +22,8 @@ function App() {
   const navigate = useNavigate();
 
   return (
-
-    <Routes>
-      
+  <Routes>   
+    <>
       <Route
         path="/"
         element={
@@ -189,10 +188,10 @@ function App() {
         path="/logout"
         element={<LogOut />}
       />
-    </Routes>
+   
 
-  );
-}
+  
+
 
       <Route
         path="/ProfileSettings"
@@ -203,6 +202,7 @@ function App() {
           />
         }
       />
+      </>   
     </Routes>
   );
 }
