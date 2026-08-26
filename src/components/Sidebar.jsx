@@ -62,7 +62,7 @@ export default function Sidebar() {
         })}
 
         <Link
-          to="/settings"
+          to="/profile-settings"
           className="mt-6 flex w-full items-center gap-3 rounded-lg px-4 py-3 text-gray-600 hover:bg-gray-100 hover:text-gray-900"
         >
           <Settings size={20} />
