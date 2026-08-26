@@ -11,7 +11,7 @@ export function BudgetPieChart({ budgets = [] }) {
     return (
       <div className="bg-white border border-stone-200 rounded-xl p-6 flex flex-col items-center justify-center text-center h-full min-h-55">
         <div className="w-16 h-16 rounded-full border-4 border-dashed border-stone-200 mb-3 flex items-center justify-center">
-          <span className="text-stone-400 text-xs font-semibold">$0</span>
+          <span className="text-stone-400 text-xs font-semibold">Ksh 0</span>
         </div>
         <p className="text-stone-500 text-sm font-medium">
           No budget allocations yet
@@ -109,7 +109,7 @@ export function BudgetPieChart({ budgets = [] }) {
             <div className="flex items-center gap-3">
               <span className="text-stone-400">{slice.percent}%</span>
               <span className="font-semibold text-stone-900">
-                ${slice.allocated.toLocaleString()}
+                Ksh{slice.allocated.toLocaleString()}
               </span>
             </div>
           </div>

@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../lib/firebase";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate =useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -28,6 +30,7 @@ navigate("/dashboard");
 
       alert("Login successful!");
      
+      navigate("/dashboard")
 
       console.log("Logged in user:", auth.currentUser);
 
@@ -97,7 +100,16 @@ navigate("/dashboard");
             {loading ? "Signing in..." : "Sign In"}
           </button>
 
-        </form>
+            </form>
+              <p className="mt-4 text-center text-sm text-gray-600">
+                 Don't have an account?{" "}
+                <a
+                 href="/signup"
+                 className="font-medium text-blue-600 hover:underline"
+                >
+                 Sign Up
+                </a>
+              </p>
 
       </div>
     </div>

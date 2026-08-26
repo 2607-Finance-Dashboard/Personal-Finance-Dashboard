@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
-import { Plus, Wallet2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Plus, Wallet, Wallet2 } from 'lucide-react';
 import { BudgetCard } from './BudgetCard';
 import { BudgetPieChart } from './BudgetPieChart';
 import { BudgetModal } from './BudgetModal';
+import { db } from '../../lib/firebase';
+import { 
+  collection, 
+  query, 
+  onSnapshot, 
+  doc, 
+  updateDoc, 
+  addDoc, 
+  deleteDoc 
+} from 'firebase/firestore';
 
 const initialBudgets = [
   { id: '1', category: 'Groceries & Household', allocated: 600, spent: 420, isSorted: false, color: '#059669' },
@@ -16,6 +26,19 @@ export default function BudgetsPage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingBudget, setEditingBudget] = useState(null);
 
+     // 1. Fetch data in real-time from Firestore
+  useEffect(() => {
+    const q = query(collection(db, 'budgets'));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const budgetData = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setBudgets(budgetData);
+    });
+    return () => unsubscribe();
+  }, []);
+
     const handleOpenCreateModal =() => {
         setEditingBudget(null);
         setIsModalOpen(true);
@@ -25,25 +48,53 @@ export default function BudgetsPage() {
         setIsModalOpen(true);
 
     };
-    const handleSaveBudget = (savedBudget) => {
-        setBudgets((prevBudgets) => {
-            const exists = prevBudgets.some((b) => b.id === savedBudget.id);
-            if(exists){
-              return prevBudgets.map((b) => (b.id === savedBudget.id ? savedBudget : b));  
-            };
-            return [...prevBudgets, savedBudget];
-        });
-    };
-    const handleDeleteBudget = (idToDelete) => {
-    setBudgets((prevBudgets) => prevBudgets.filter((b) => b.id !== idToDelete));
+    // 2. Add or Update budget in Firestore
+  const handleSaveBudget = async (savedBudget) => {
+    try {
+      const budgetPayload = {
+        category: savedBudget.category,
+        allocated: savedBudget.allocated,
+        spent: savedBudget.spent,
+        isSorted: savedBudget.isSorted,
+        color: savedBudget.color,
+      
+    }; 
+    if (editingBudget) {
+        // Update existing document
+        await updateDoc(doc(db, 'budgets', savedBudget.id), budgetPayload);
+      } else {
+        // Create new document
+        await addDoc(collection(db, 'budgets'), budgetPayload);
+      }
+    } catch (error) {
+      console.error("Error saving budget:", error);
+    }
   };
 
-  const handleToggleSorted = (idToToggle) => {
-    setBudgets((prevBudgets) =>
-      prevBudgets.map((b) =>
-        b.id === idToToggle ? { ...b, isSorted: !b.isSorted } : b
-      )
-    );
+
+    // 3. Delete from Firestore
+  const handleDeleteBudget = async (idToDelete) => {
+    if (window.confirm('Are you sure you want to delete this budget?')) {
+      try {
+        await deleteDoc(doc(db, 'budgets', idToDelete));
+      } catch (error) {
+        console.error("Error deleting budget:", error);
+      }
+    }
+  };
+
+  // 4. Toggle the "Sorted" status in Firestore
+  const handleToggleSorted = async (idToToggle) => {
+    const targetBudget = budgets.find((b) => b.id === idToToggle);
+    if (targetBudget) {
+      try {
+        await updateDoc(doc(db, 'budgets', idToToggle), {
+          isSorted: !targetBudget.isSorted
+        });
+      } catch (error) {
+        console.error("Error updating sorted status:", error);
+      }
+    }
   };
 
   return (
@@ -84,7 +135,7 @@ export default function BudgetsPage() {
             </div>
             <h3 className="text-base font-semibold text-stone-800">No active budgets</h3>
             <p className="text-xs text-stone-400 max-w-sm mx-auto mt-1 mb-4">
-              You haven't set up any budget targets yet. Click below to add your first category.
+              You haven't set up any targets. Click to add.
             </p>
             <button
               onClick={handleOpenCreateModal}

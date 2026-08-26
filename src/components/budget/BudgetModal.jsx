@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import { Check, X } from "lucide-react";
+import { Check, X,} from "lucide-react";
 
 
 // color palettes to choose for cards
@@ -101,7 +101,7 @@ export function BudgetModal({
           {/* limit  */}
           <div>
             <label className="block text-xs font-semibold uppercase text-stone-600 mb-1">
-              Monthly Spending Limit ($)
+              Monthly Spending Limit (Ksh)
             </label>
             <input
               type="number"
@@ -117,7 +117,7 @@ export function BudgetModal({
 
           <div>
             <label className="block text-xs font-semibold uppercase text-stone-600 mb-1">
-              Already Spent ($){" "}
+              Already Spent (Ksh){" "}
               <span className="text-stone-400 font-normal lowercase">(optional)</span>              
             </label>
             <input
@@ -133,7 +133,7 @@ export function BudgetModal({
 
           <div>
             <label className="block text-xs font-semibold uppercase text-stone-600 mb-2">
-              Category Accent Color
+              Category Color
             </label>
             <div className="flex flex-wrap gap-2.5">
               {COLOR_PALETTE.map((colorObj) => {
@@ -167,7 +167,7 @@ export function BudgetModal({
               })}
             </div>
             <p className="text-xs text-stone-400 mt-1.5">
-              Faded colors are already assigned to another budget category.
+              Color already assigned.
             </p>
           </div>
 
