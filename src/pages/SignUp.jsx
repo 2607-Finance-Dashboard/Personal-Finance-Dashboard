@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase/Config";
+import { auth } from "../lib/firebase";
 import { useNavigate } from "react-router-dom";
 
 function SignUp() {
@@ -21,7 +21,7 @@ function SignUp() {
       await createUserWithEmailAndPassword(auth, email, password);
 
       alert("Account created successfully!");
-      navigate("/test-login");
+      navigate("/login");
     } catch (error) {
       console.log(error);
       setError(error.message);
@@ -91,3 +91,7 @@ function SignUp() {
 }
 
 export default SignUp;
+
+
+
+

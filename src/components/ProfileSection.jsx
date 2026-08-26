@@ -9,9 +9,9 @@ function ProfileSection() {
     const [isEditing, setIsEditing] = useState(false);
 
     const [profile, setProfile] = useState({
-        name: "Nimo Ali",
-        email: "nimo@gmail.com",
-        phone: "+254 790785634",
+        name: "John",
+        email: "john@gmail.com",
+        phone: "07xxxxxxx",
         location: "Nairobi, Kenya",
     });
 
